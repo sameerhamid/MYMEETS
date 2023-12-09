@@ -18,20 +18,28 @@
 
 /* header styling starts */
 .header_wrapper {
+  top: 0;
   display: flex;
   justify-content: space-between;
   background-color: teal;
   align-items: center;
-  padding: 1rem 4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
   color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 200000;
 }
 
 .header_wrapper .name {
+  margin-left: 6rem;
   font-size: 2rem;
   font-weight: bold;
 }
 
 .header_wrapper .links {
+  margin-right: 6rem;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -46,6 +54,8 @@
 
 /* wrapper syling starts */
 .wrapper {
+  position: relative;
+  top: 4rem;
   width: 70%;
   margin: 1rem auto;
 }
