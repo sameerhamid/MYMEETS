@@ -12,7 +12,7 @@ const AllMeetUps = () => {
       const meetups = []
       for (let key in data) {
         const meetup = {
-          id: key, ...data[key]
+          id: key, ...data[key],
         }
         meetups.push(meetup)
       }

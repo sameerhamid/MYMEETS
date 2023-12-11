@@ -24,14 +24,19 @@
 
 button {
   padding: 10px 22px;
-  background-color: teal;
   border: none;
   color: #fff;
   font-weight: bold;
   font-size: 18px;
   border-radius: 10px;
+  cursor: pointer;
 }
-
+.btn_primary {
+  background-color: teal;
+}
+.btn_secondary {
+  background-color: orangered;
+}
 /* loading styling starts */
 .loadder_container {
   height: 60vh;
