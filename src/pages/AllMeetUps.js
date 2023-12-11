@@ -1,34 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MeetupList from '../components/meetups/MeetupList'
-const DUMMY_DATA = [
-  {
-    id: 0,
-    title: 'this is the first meetup',
-    imgUrl: "https://images.pexels.com/photos/11121334/pexels-photo-11121334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description: "This is a first,amaging meetup whih you definitly should not miss. "
-  },
-  {
-    id: 1,
-    title: 'this is the second meetup',
-    imgUrl: "https://images.pexels.com/photos/3719037/pexels-photo-3719037.jpeg",
-    description: "This is a first,amaging meetup whih you definitly should not miss. "
-  },
-  {
-    id: 2,
-    title: 'this is the third meetup',
-    imgUrl: "https://images.pexels.com/photos/11121334/pexels-photo-11121334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description: "This is a first,amaging meetup whih you definitly should not miss. "
-  },
+import Loading from '../components/ui/Loading'
 
-
-
-]
 const AllMeetUps = () => {
+  const [meetupData, setMeetupData] = useState([])
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://my-meetups-b3217-default-rtdb.firebaseio.com/meetups.json'
+    ).then(res => res.json()).then(data => {
+      const meetups = []
+      for (let key in data) {
+        const meetup = {
+          id: key, ...data[key]
+        }
+        meetups.push(meetup)
+      }
+      setMeetupData(meetups);
+      setLoading(false)
+    })
+  }, [])
   return (
     <div className='allMeetupContainer'>
       <h1 className='heading'>All Meetups</h1>
+      {loading ? <Loading /> : <MeetupList meetups={meetupData} />}
 
-      <MeetupList meetups={DUMMY_DATA} />
     </div>
   )
 }

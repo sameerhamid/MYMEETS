@@ -16,6 +16,29 @@
   font-weight: bold;
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 22px;
+  background-color: teal;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+/* loading styling starts */
+.loadder_container {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* header styling starts */
 .header_wrapper {
   top: 0;
@@ -93,21 +116,6 @@
 .meetup_item_container .meetup_item_body .description {
   margin-bottom: 16px;
 }
-.meetup_item_container .meetup_item_body .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.meetup_item_container .meetup_item_body .button button {
-  padding: 10px 22px;
-  background-color: teal;
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 10px;
-}
 
 /* meetups list styling starts */
 
@@ -118,4 +126,53 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
+}
+
+/*  meetup form stying stars? */
+
+.new_meetup_form_conainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* meetup form styling starts */
+
+.my_form {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 40vw;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.my_form .control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.my_form .control label {
+  font-size: 18;
+  font-weight: bold;
+}
+
+.my_form .control input {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  outline: none;
+  font-size: 20;
+}
+
+.my_form .control textarea {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  outline: none;
 }
