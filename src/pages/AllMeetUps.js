@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MeetupList from '../components/meetups/MeetupList'
 import Loading from '../components/ui/Loading'
 
+
 const AllMeetUps = () => {
   const [meetupData, setMeetupData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -24,6 +25,8 @@ const AllMeetUps = () => {
     <div className='allMeetupContainer'>
       <h1 className='heading'>All Meetups</h1>
       {loading ? <Loading /> : <MeetupList meetups={meetupData} />}
+
+
 
     </div>
   )

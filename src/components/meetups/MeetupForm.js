@@ -1,10 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, } from 'react'
+
 
 const MeetupForm = ({ onAddMeetup }) => {
   const titleRef = useRef("");
   const imageRef = useRef("");
   const addressRef = useRef("");
   const descRef = useRef("");
+
 
 
   const handleSubmit = (e) => {
@@ -23,9 +25,10 @@ const MeetupForm = ({ onAddMeetup }) => {
     imageRef.current.value = ""
     addressRef.current.value = ""
     descRef.current.value = ""
-
   }
-  return (
+
+
+  return (<>
     <form className='my_form' onSubmit={handleSubmit}>
       <div className="control">
         <label htmlFor='title'>Meetup Title:</label>
@@ -44,10 +47,12 @@ const MeetupForm = ({ onAddMeetup }) => {
         <textarea id='description' required rows='5' ref={descRef} />
       </div>
       <div className='button'>
-        <button>Add to Favourite</button>
+        <button className='btn_primary'>Add to Favourite</button>
       </div>
 
     </form >
+  </>
+
   )
 }
 

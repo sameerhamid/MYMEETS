@@ -5,7 +5,7 @@ import { FavouriteContext } from '../store/favourites-context'
 
 const Favourites = () => {
   const { context } = useContext(FavouriteContext)
-  const { favorites } = context;
+  const { favorites, totalFavorites } = context;
   console.log({ favorites });
   const [myFavorites, setMyFavorites] = useState([])
   const [loading, setLoading] = useState(false)
@@ -28,7 +28,7 @@ const Favourites = () => {
   return (
     <div>
       <h1 className='heading'>Favorites</h1>
-      {loading ? <Loading /> : <MeetupList meetups={myFavorites} />}
+      {totalFavorites === 0 ? <h2>No Total favorites yet.</h2> : loading ? <Loading /> : <MeetupList meetups={myFavorites} favorite={true} />}
     </div>
   )
 }
