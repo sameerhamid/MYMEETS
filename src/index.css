@@ -20,6 +20,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 button {
@@ -36,6 +38,10 @@ button {
 }
 .btn_secondary {
   background-color: orangered;
+}
+
+.btn_delete {
+  background-color: red;
 }
 /* loading styling starts */
 .loadder_container {
@@ -95,6 +101,7 @@ button {
   border: 1px solid #ccc;
   border-radius: 10px;
   width: 40vw;
+  margin-bottom: 1rem;
 }
 
 .meetup_item_container img {

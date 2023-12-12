@@ -6,7 +6,8 @@ export const FavouriteContext = createContext({
   totalFavorites: 0,
   addFavoriteHandler: () => { },
   removeFavoriteHandler: () => { },
-  itemIsFavoriteHandler: () => { }
+  itemIsFavoriteHandler: () => { },
+  deleteMeetupHandler: () => { }
 })
 
 
@@ -27,7 +28,7 @@ const meetupReducer = (state, action) => {
     })
   } else if (action.type === "INITIAL_POSTS") {
     favoriteMeets = action.meetups
-  } else if (action.type === "DELETE") {
+  } else if (action.type === "REMOVE_FAV") {
     let myKey = "";
     for (let key in state) {
       if (state[key].id === action.payload.meetupId) {
@@ -36,6 +37,14 @@ const meetupReducer = (state, action) => {
     }
 
     fetch(`https://my-meetups-b3217-default-rtdb.firebaseio.com/favorites/${myKey}.json`, {
+      method: "DELETE",
+    })
+      .then(data => {
+        console.log(data, " delete successful");
+        window.location.reload()
+      })
+  } else if (action.type === 'DELETE') {
+    fetch(`https://my-meetups-b3217-default-rtdb.firebaseio.com/meetups/${action.payload.meetupId}.json`, {
       method: "DELETE",
     })
       .then(data => {
@@ -67,6 +76,16 @@ const FavoriteContextProvider = ({ children }) => {
   // add favorite function
 
   const removeFavoriteHandler = (meetupId) => {
+    let removeFavAction = {
+      type: 'REMOVE_FAV',
+      payload: {
+        meetupId
+      }
+    }
+    dispatchFavorites(removeFavAction);
+  }
+
+  const deleteMeetupHandler = (meetupId) => {
     let deleteMeetupAction = {
       type: 'DELETE',
       payload: {
@@ -95,10 +114,6 @@ const FavoriteContextProvider = ({ children }) => {
     dispatchFavorites(initialItemsAction)
   }
 
-
-
-
-
   useEffect(() => {
     setLoading(true)
     fetch('https://my-meetups-b3217-default-rtdb.firebaseio.com/favorites.json'
@@ -126,6 +141,7 @@ const FavoriteContextProvider = ({ children }) => {
     loading,
     removeFavoriteHandler,
     itemIsFavoriteHandler,
+    deleteMeetupHandler
   }
 
 
